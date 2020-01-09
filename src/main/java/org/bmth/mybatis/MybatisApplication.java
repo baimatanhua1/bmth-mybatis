@@ -7,6 +7,7 @@ import org.bmth.mybatis.dao.UserMapper;
 import org.bmth.mybatis.entity.User;
 
 import java.io.InputStream;
+import java.util.List;
 
 /**
  * Created by pengq on 2020/1/4 13:15.
@@ -18,7 +19,7 @@ public class MybatisApplication {
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
         SqlSession sqlSession = sqlSessionFactory.openSession();
         UserMapper userDao = sqlSession.getMapper(UserMapper.class);
-        User user = userDao.selectByPrimaryKey(1);
+        List<User> user = userDao.findAll();
         System.out.println(user);
     }
 }

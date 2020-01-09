@@ -8,7 +8,7 @@ import java.util.Date;
  * Created by pengq on 2020/1/4 13:18.
  */
 @Data
-public class User implements Serializable {
+public class User{
     private Integer id;
 
     private String username;
@@ -19,19 +19,13 @@ public class User implements Serializable {
 
     private String nickname;
 
-    private Boolean sex;
+    private Integer sex;
+
+    private Integer age;
+
+    private String telephone;
 
     private Boolean enable;
 
-    private Boolean accountNonExpired;
-
-    private Boolean accountNonLocked;
-
-    private Boolean credentialsNonExpired;
-
-    private Date updateTime;
-
     private Date createTime;
-
-    private static final long serialVersionUID = 1L;
 }
