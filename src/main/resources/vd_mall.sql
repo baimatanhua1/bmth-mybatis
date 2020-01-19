@@ -31,6 +31,7 @@ CREATE TABLE IF NOT EXISTS `vd_mall`.`users`
     `age`       INT          NULL COMMENT '年龄',
     `sex`       TINYINT(4)   NULL COMMENT '性别',
     `telephone` VARCHAR(45)  NULL COMMENT '电话',
+    `address` VARCHAR(255)  NULL COMMENT '地址',
     `enable`    TINYINT(4)   NULL DEFAULT 0 COMMENT '状态 0-禁用 1-启用',
     `create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIME COMMENT '创建时间',
     PRIMARY KEY (`id`)

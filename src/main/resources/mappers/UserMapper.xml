@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.bmth.mybatis.dao.UserMapper">
-  <select id="findAll" resultType="org.bmth.mybatis.entity.User">
+  <select id="findAll" resultType="user">
     SELECT * FROM `users`;
   </select>
+
+  <insert id="saveUser" parameterType="user">
+    INSERT INTO `users` (`username`, `password`, `nickname`, `avatar`, `age`, `sex`, `telephone`,`address`, `enable`)
+    VALUES (#{username}, #{password}, #{nickname}, #{avatar}, #{age}, #{sex}, #{telephone}, #{address,typeHandler=org.bmth.mybatis.handler.AddressTypeHandler}, #{enable});
+  </insert>
 </mapper>

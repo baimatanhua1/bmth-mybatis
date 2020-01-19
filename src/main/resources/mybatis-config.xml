@@ -1,15 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-    <properties resource="database-config.properties"/>
+    <properties resource="database-config.properties">
+        <property name="transactionManagerType" value="JDBC"/>
+    </properties>
 
     <settings>
         <setting name="mapUnderscoreToCamelCase" value="true"/>
     </settings>
 
+    <typeAliases>
+        <typeAlias type="org.bmth.mybatis.entity.User" alias="user"/>
+<!--        <package name="org.bmth.mybatis.entity"/>-->
+    </typeAliases>
+
+    <typeHandlers>
+        <typeHandler handler="org.bmth.mybatis.handler.AddressTypeHandler" javaType="org.bmth.mybatis.entity.Address" jdbcType="VARCHAR"/>
+    </typeHandlers>
+
     <environments default="development">
         <environment id="development">
-            <transactionManager type="JDBC"/>
+            <transactionManager type="${transactionManagerType}"/>
             <dataSource type="POOLED">
                 <property name="driver" value="${db.driver}"/>
                 <property name="url" value="${db.url}"/>
