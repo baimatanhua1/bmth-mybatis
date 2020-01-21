@@ -18,6 +18,12 @@
         <typeHandler handler="org.bmth.mybatis.handler.AddressTypeHandler" javaType="org.bmth.mybatis.entity.Address" jdbcType="VARCHAR"/>
     </typeHandlers>
 
+    <plugins>
+        <plugin interceptor="org.bmth.mybatis.plugins.QueryLimitPlugins">
+            <property name="limit" value="10"/>
+        </plugin>
+    </plugins>
+
     <environments default="development">
         <environment id="development">
             <transactionManager type="${transactionManagerType}"/>

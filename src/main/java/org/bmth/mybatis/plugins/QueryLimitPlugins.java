@@ -1,0 +1,39 @@
+package org.bmth.mybatis.plugins;
+
+
+import org.apache.ibatis.executor.Executor;
+import org.apache.ibatis.executor.statement.StatementHandler;
+import org.apache.ibatis.mapping.MappedStatement;
+import org.apache.ibatis.mapping.SqlSource;
+import org.apache.ibatis.plugin.Interceptor;
+import org.apache.ibatis.plugin.Intercepts;
+import org.apache.ibatis.plugin.Invocation;
+import org.apache.ibatis.plugin.Signature;
+import org.apache.ibatis.session.ResultHandler;
+import org.apache.ibatis.session.RowBounds;
+
+import java.util.Properties;
+
+/**
+ * Created by pengq on 2020/1/21 19:18.
+ */
+@Intercepts({@Signature(
+        type = Executor.class,
+        method = "query",
+        args = {MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class}
+)})
+public class QueryLimitPlugins implements Interceptor {
+    private Properties properties = new Properties();
+
+    @Override
+    public Object intercept(Invocation invocation) throws Throwable {
+        System.out.println(properties);
+
+        return invocation.proceed();
+    }
+
+    @Override
+    public void setProperties(Properties properties) {
+        this.properties = properties;
+    }
+}
