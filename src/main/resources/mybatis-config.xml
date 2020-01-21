@@ -11,7 +11,7 @@
 
     <typeAliases>
         <typeAlias type="org.bmth.mybatis.entity.User" alias="user"/>
-<!--        <package name="org.bmth.mybatis.entity"/>-->
+        <!--<package name="org.bmth.mybatis.entity"/>-->
     </typeAliases>
 
     <typeHandlers>
